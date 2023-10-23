@@ -1,42 +1,47 @@
 "use client";
 
+import React from "react";
 import Botao from "@/components/Botao";
+import Formulario from "@/components/Formulario";
 import Layout from "@/components/Layout";
 import Tabela from "@/components/Tabela";
-import Cliente from "@/core/Cliente";
+import useClientes from "@/hooks/useClientes";
 
 export default function Home() {
-  const clientes = [
-    new Cliente("Jean", 31, "1"),
-    new Cliente("Normelena", 60, "2"),
-    new Cliente("Franciele", 33, "3"),
-    new Cliente("Crisostomo", 75, "4"),
-    new Cliente("Vanessa", 37, "5"),
-  ];
+  const {
+    cliente,
+    clientes,
+    selecionarCliente,
+    novoCliente,
+    salvarCliente,
+    excluirCliente,
+    tabelaVisivel,
+    exibirTabela,
+  } = useClientes();
 
-  function clienteSelecionado(cliente: Cliente) {
-    console.log(cliente.nome);
-  }
-
-  function clienteExcluido(cliente: Cliente) {
-    console.log(cliente.nome);
-  }
+  console.log(tabelaVisivel);
 
   return (
     <div
       className={`flex h-screen justify-center items-center bg-gradient-to-r from-blue-500 text-white`}
     >
       <Layout titulo="Cadastro Simples">
-        <div className="flex justify-end">
-          <Botao className="mb-4" cor="blue">
-            Novo Cliente
-          </Botao>
-        </div>
-        <Tabela
-          clientes={clientes}
-          clienteSelecionado={clienteSelecionado}
-          clienteExcluido={clienteExcluido}
-        ></Tabela>
+        {tabelaVisivel ? (
+          <>
+            <div className="flex justify-end">
+              <Botao className="mb-4" cor="blue" onClick={novoCliente}>
+                Novo Cliente
+              </Botao>
+            </div>
+            <Tabela
+              clientes={clientes}
+              clienteSelecionado={selecionarCliente}
+              clienteExcluido={excluirCliente}
+            />
+          </>
+        ) : (
+          <Formulario cliente={cliente} cancelado={exibirTabela} clienteMudou={salvarCliente} />
+        )}
       </Layout>
     </div>
   );
