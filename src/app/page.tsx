@@ -19,8 +19,6 @@ export default function Home() {
     exibirTabela,
   } = useClientes();
 
-  console.log(tabelaVisivel);
-
   return (
     <div
       className={`flex h-screen justify-center items-center bg-gradient-to-r from-blue-500 text-white`}
