@@ -15,7 +15,7 @@ const Formulario = (props: FormularioProps) => {
   const [idade, setIdade] = useState(props.cliente?.idade ?? 0);
   return (
     <div>
-      {id && <Entrada texto="Código" valor={id} className="mb-2" />}
+      {id && <Entrada texto="Código" valor={id} className="mb-2" disable={true} />}
       <Entrada texto="Nome" valor={nome} valorMudou={setNome} className="mb-2" />
       <Entrada texto="Idade" valor={idade} valorMudou={setIdade} tipo="number" />
       <div className="flex gap-2 mt-3 justify-end">

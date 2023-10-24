@@ -7,6 +7,7 @@ interface EntradaProps {
   somenteLeitura?: boolean;
   valorMudou?: (valor: any) => void;
   className?: string;
+  disable?: boolean;
 }
 
 const Entrada = (props: EntradaProps) => {
@@ -24,6 +25,7 @@ const Entrada = (props: EntradaProps) => {
         className={`border border-blue-500 rounded-lg focus: outline-none bg-gray-100 px-4 py-2 
         } `}
         onChange={(e) => props.valorMudou?.(e.target.value)}
+        disabled={props.disable}
       />
     </div>
   );

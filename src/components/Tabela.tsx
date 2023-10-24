@@ -14,7 +14,7 @@ const Tabela = (props: TabelaProps) => {
   function renderizarCabecalho() {
     return (
       <tr>
-        <th className={`text-left p-4`}>Código</th>
+        {/* <th className={`text-left p-4`}>Código</th> */}
         <th className={`text-left p-4`}>Nome</th>
         <th className={`text-left p-4`}>Idade</th>
         {exibirAcoes && <th className={`p-4`}>Ações</th>}
@@ -26,7 +26,7 @@ const Tabela = (props: TabelaProps) => {
     return props.clientes?.map((cliente, index) => {
       return (
         <tr key={cliente.id} className={`${index % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`}>
-          <td className={`text-left p-4`}>{cliente.id}</td>
+          {/* <td className={`text-left p-4`}>{cliente.id}</td> */}
           <td className={`text-left p-4`}>{cliente.nome}</td>
           <td className={`text-left p-4`}>{cliente.idade}</td>
           {exibirAcoes && renderActions(cliente)}
